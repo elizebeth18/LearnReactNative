@@ -11,6 +11,7 @@ const GoalInput = (props) => {
 
     const addGoalHandler = () => {
         props.addGoalHandler(goalText);
+        setGoalText('');
     }
 
     return (
@@ -43,6 +44,6 @@ const styles = StyleSheet.create({
         padding: 8
     },
 
-})
+});
 
 export default GoalInput;

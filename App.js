@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {
-  StyleSheet,
+  StyleSheet,Text,
   View,
   FlatList
 } from 'react-native';
@@ -18,6 +18,13 @@ export default function App() {
     }]);
   }
 
+  const deleteHandler = (key) => {
+    console.log('Delete',key);
+    setGoalsList(curGoalsList => {
+      return curGoalsList.filter((goal) => goal.key !== key)
+    })
+  }
+
   return (
     <View style={styles.appContainer}>
 
@@ -26,7 +33,9 @@ export default function App() {
       <View style={styles.goalContainer}>
         <Text>List of Goals</Text>
         <FlatList data={goalsList} renderItem={(itemData) => {
-          return (<GoalItem text={itemData.item.text} />)
+          return (<GoalItem text={itemData.item.text}
+            id={itemData.item.key}
+            onDeleteItem={deleteHandler} />)
         }} />
       </View>
 
