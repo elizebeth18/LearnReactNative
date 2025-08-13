@@ -1,7 +1,7 @@
 import {
     StyleSheet,
     View, Text,
-    Button,
+    Button, Pressable,
 } from "react-native";
 
 const GoalItem = (props) => {
@@ -12,8 +12,9 @@ const GoalItem = (props) => {
 
     return (
         <View style={styles.goalItems}>
-            <Text style={styles.goalText}>{props.text}</Text>
-            <Button title="Delete" style={styles.delButton} onPress={onDelete} />
+            <Pressable android_ripple={{ color: '#dddddd' }} onPress={onDelete}>
+                <Text style={styles.goalText}>{props.text}</Text>
+            </Pressable>
         </View>
     );
 }
@@ -25,17 +26,12 @@ const styles = StyleSheet.create({
         padding: 8,
         borderRadius: 8,
         backgroundColor: '#5e0acc',
-
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'
     },
     goalText: {
         color: 'white',
-        width: '70%'
-    },
-    delButton: {
-        width: '15%'
     }
 })
 
